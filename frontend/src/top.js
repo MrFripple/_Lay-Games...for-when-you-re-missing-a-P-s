@@ -7,10 +7,12 @@ import {Item} from './Item.js';
 import {WebcamCapture} from './webcam.js';
 import {UserUploaded} from './userUploaded.js';
 import {PieceIcons} from './pieceIcons.js';
+import {SidePanels} from './sidePanels.js';
 
 export const Top = () => {
  const [gameList, setGameList] = useState([]);
  const [searchTerm, setSearchTerm] = useState('Catan');
+ const [sidePanels, setSidePanels] = useState(false);
  const [dragPictureArr, setDragPictureArr] = useState([{'img':'red.png',style: {
   top:30,
   left:30,
@@ -47,14 +49,16 @@ export const Top = () => {
       searchTerm, setSearchTerm,
       dragPictureArr, setDragPictureArr,
       gameSelected, setGameSelected,
-      cleanUpImage, setCleanUpImage
+      cleanUpImage, setCleanUpImage,
+      sidePanels, setSidePanels
     }}>
       <UserUploaded />
       {console.log('rendering top lvl and ',cleanUpImage)}
-      {cleanUpImage? <div style={{top: '10%',left:'10%', height:"87%", width:"80%", position:'absolute',overflow:'auto',border:'5px ridge blue'}}>
+      {cleanUpImage? <div style={{zIndex:9999,top: '10%',left:'10%', height:"86%", width:"80%", position:'absolute',overflow:'auto',border:'5px ridge blue'}}>
       <div style= {{font:'70px', color:'black'}} onClick= {() => {setCleanUpImage(false)}}>X</div>
     <iframe style={{top: '0%',left:'0%', height:"95%", width:"95%",overflow:'auto'}} src="http://localhost:8080"></iframe>
  </div>:null}
+
       <PieceIcons />
       {pieceIconsArr.map((oneImg) => {
         return(<div>{!oneImg.img? null:<DragPicture props={oneImg}/>} </div>);
@@ -69,12 +73,14 @@ export const Top = () => {
       searchTerm, setSearchTerm,
       dragPictureArr, setDragPictureArr,
       gameSelected, setGameSelected,
-      cleanUpImage, setCleanUpImage
+      cleanUpImage, setCleanUpImage,
+      sidePanels, setSidePanels
     }}>
-    <div>
+    <div style = {{left:'-20%',width:'110%'}}>
     {console.log('rendering top lvl')}
-      <h1>GMAES</h1>
+      <h1>GAMES</h1>
       <SearchGames />
+
       <Item />
       </div>
       </AppContext.Provider>

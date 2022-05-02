@@ -31,7 +31,10 @@ return (
           <img id={oneImg.img} onClick={(e) => {iconClick(e)}} className = 'pieceIcons'  src={oneImg.img}></img>
         );
       })}
-      <button onClick={() => {setCleanUpImage(true)}}>Clean up Image</button>
+      <button onClick={() => {
+
+        setCleanUpImage(true);
+      }}>Clean up Image</button>
       </div>
     </Draggable>
 </div>
